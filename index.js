@@ -5,6 +5,8 @@ import cors from 'cors'
 import 'dotenv/config'
 import adminRoutes from './routes/admin.js'
 import Event from './models/postEvent.js'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express()
 
