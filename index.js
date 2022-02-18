@@ -5,7 +5,6 @@ import cors from 'cors'
 import 'dotenv/config'
 import adminRoutes from './routes/admin.js'
 import Event from './models/postEvent.js'
-import path from 'path'
 
 const app = express()
 
@@ -25,12 +24,6 @@ app.post('/:id', async(req, res) => {
    const memberArr = req.body
    await Event.findByIdAndUpdate(id, {members: memberArr})
 })
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'))
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
-}
 
 const PORT = process.env.PORT|| 8000
 
